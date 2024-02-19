@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:23.0.1 
+    container_name: keycloak
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=New1234!
+      - KC_DB=postgres
+      - KC_DB_URL_HOST=211.43.13.1
+      - KC_DB_URL_PORT=30459
+      - KC_DB_URL_DATABASE=keycloak2
+      - KC_DB_USERNAME=keycloak2
+      - KC_DB_PASSWORD=New1234!
+      #    - JDBC_PARAMS: ssl=false"
+      - KC_HEALTH_ENABLED=true
+    ports:
+      - "8080:8080"
+    command: start-dev
+    healthcheck:
+      test: "curl -f http://localhost:8080/health/ready || exit 1"
+
+
+
+
+
+
+
+
+
+
+
