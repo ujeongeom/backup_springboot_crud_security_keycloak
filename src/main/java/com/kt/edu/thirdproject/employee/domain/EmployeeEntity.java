@@ -15,7 +15,7 @@ import org.springframework.data.relational.core.mapping.Table;
 @NoArgsConstructor
 @ToString
 @Table("EMPLOYEE")
-@Schema(description = "employee Entity")
+@Schema(description = "EMPLOYEE Entity")
 //json 에서 해당 값 제외
 @JsonIgnoreProperties({"new"})
 public class EmployeeEntity implements Persistable<Long> {
