@@ -13,14 +13,39 @@ spring:
 # cache 사용을 위해 cache name 설정
   cache:
     cache-names: employee
-#  security:
-#    user:
-#      name: admin
-#      password: admin
-#  boot:
-#    admin:
-#      client:
-#        url: http://localhost:8080
+  #  security:
+  #    user:
+  #      name: admin
+  #      password: admin
+  #  boot:
+  #    admin:
+  #      client:
+  #        url: http://localhost:8080
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/employee-services # http://211.252.87.34:40007/realms/employee-services
+
+jwt:
+  auth:
+    converter:
+      resource-id: edu-app # movies-app
+      principal-attribute: preferred_username
+
+app:
+  #cors:
+  #  allowed-origins: http://localhost:3000
+  keycloak:
+    server: http://localhost:8080 # http://211.252.87.34:40007
+      #  keycloak:
+      #    auth-server-url: ${KEYCLOAK_SERVER_URL:http://localhost:8080/auth}
+      #    realm: ${KEYCLOAK_REALM:spring-boot-blueprint}
+      #    resource: ${KEYCLOAK_RESOURCE:spring-boot-app}
+      #    public-client: true
+      #    ssl-required: ${KEYCLOAK_SSL_REQUIRED:external}
+    #    principal-attribute: preferred_username
+    #    confidential-port: ${KEYCLOAK_CONFIDENTIAL_PORT:443}
 
 # logging
 logging:
@@ -31,8 +56,8 @@ jasypt:
   encryptor:
     bean: jasyptStringEncryptor
 
-jwt:
-  secret: edujwt
+#jwt:
+#  secret: edujwt
 
 # app
 app-info:
